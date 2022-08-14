@@ -15,3 +15,22 @@
   text-decoration: none;
   color: rgb(71, 71, 71)
 }
+.box {
+  width: 500px;
+  height: 100px;
+  /* position: absolute;
+  left: calc(50%-150px);
+  top: calc(50%-50px); */
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.login {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 300px;
+}

@@ -19,7 +19,7 @@ export const Login = () => {
       })
     }).then(res => res.json())
     .then((data)=> {
-    if(data){
+    if(data.token !== undefined){
       window.localStorage.setItem('token', data.token);
       navigate('/')
       window.location.reload(true)
@@ -27,15 +27,15 @@ export const Login = () => {
   }
 
   return (
-    <>
-      <h2> Login Page </h2>
+    <div className="login w-50">
+      <h2> Enter your email and password </h2>
       <div>
         <form onSubmit={handleValue}>
-          <input ref={elEmail} type="email" placeholder="Email" />
-          <input ref={elPass} type="password" placeholder="Password" />
-          <button type="submit"> submit</button>
+          <input className="d-block form-control" ref={elEmail} type="email" placeholder="Email" />
+          <input className="d-block form-control my-4" ref={elPass} type="password" placeholder="Password" />
+          <button className="btn btn-primary" type="submit "> Submit</button>
         </form>
       </div>
-    </>
+    </div>
   )
 }
