@@ -1,25 +1,23 @@
 import {Link} from 'react-router-dom'
-import { useRef} from 'react'
+import { useState, useEffect} from 'react'
 import { useNavigate} from 'react-router-dom'
 import { SearchResult} from '../pages/serchResult'
 
 
 export const Header = ()=> {
-
-  let elInput = useRef();
+  let [inputValue, setInputValue] = useState('');
   let navigate = useNavigate()
+  useEffect(()=> {
 
-  let search = (evt)=> {
+    if(inputValue.trim().length > 0) {
+      navigate("/results/"+ inputValue);
+      <SearchResult value={inputValue} />
+    }else if (inputValue.length === 0){
+      navigate('/')
+    }
+    
+  },[ inputValue])
 
-    evt.preventDefault();
-    // fetch(`https://api.themoviedb.org/3/search/movie?api_key=45e38edeeb397cd32bbd8e7ac8721368&language=en-US&query=${elInput.current.value}&page=${page}`).then(res => res.json())
-    // .then(data=> {<SearchResult value={data.results} />})
-    // console.log(elInput.current.value);
-    // let value = elInput.current.value;
-    // <SearchResult value={elInput.current.value} />
-    navigate('/results')
-    // elInput.current.value = null;
-  }
   return (
     <>
       <header className="header d-flex align-items-center justify-content-around">
@@ -43,12 +41,9 @@ export const Header = ()=> {
         
           </ul>
         </nav>
-        <form onSubmit={(evt)=> {search(evt)
-        console.log(elInput.current.value);
-        <SearchResult value={elInput.current.value} />}}>
-          <input ref={elInput} type="search" placeholder="Search" />
-        </form>
         
+        <input onChange={(evt)=> { setInputValue(evt.target.value)}} type="search" placeholder="Search" />
+       
       </header>
 
     </>

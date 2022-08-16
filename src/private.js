@@ -8,8 +8,7 @@ import { SearchResult} from './pages/serchResult';
 
 export const Private = ()=> {
   return (
-
-    <>
+  <>
     <div className="container">
       <Header />
       <div>
@@ -20,14 +19,14 @@ export const Private = ()=> {
           <Route path="/top-rated" element={<TopRated />} />
           <Route path="/up-coming" element={<Upcoming />} />
           <Route path="/tv-shows" element={<TvShows />} />
-          <Route path="/results" element={<SearchResult />} />
+          <Route path="/results/:searchQuery" element={<SearchResult />} />
           <Route path='/*' element={<p>not found <Link to='/'>go back</Link></p> } />
         </Routes>
       </div>
     </div>
     
-      
-    </>
+    
+  </>
     
   )
 }
